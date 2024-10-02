@@ -1,4 +1,3 @@
-// src/components/Navbar.tsx
 import React from "react";
 import { Section } from "../assets/constants.tsx";
 
@@ -9,14 +8,15 @@ interface NavbarProps {
 
 function Navbar({ currentSection, setCurrentSection }: NavbarProps) {
   const listItems = [];
-  for (let section in Section) {
+  for (const section in Section) {
     listItems.push(
-      <SectionListItem
-        key={section}
-        currentSection={currentSection}
-        setCurrentSection={setCurrentSection}
-        item={Section[section]}
-      />,
+      <div key={section}>
+        <SectionListItem
+          currentSection={currentSection}
+          setCurrentSection={setCurrentSection}
+          item={Section[section]}
+        />
+      </div>,
     );
   }
 
@@ -24,7 +24,7 @@ function Navbar({ currentSection, setCurrentSection }: NavbarProps) {
   sticky = "fixed top-0 left-0 z-50";
   return (
     <nav
-      className={`${sticky} w-full flex flex-col md:flex-row  justify-between items-center py-6 px-10 bg-yellow-500 text-white`}
+      className={`${sticky} w-full flex flex-col md:flex-row md:py-6 justify-between items-center  px-10 bg-yellow-500 text-white`}
     >
       <div className="text-3xl font-bold">
         <span className="text-green-600">GEEVO </span>SM

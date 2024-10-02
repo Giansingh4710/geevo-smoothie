@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Navbar from "./components/NavBar";
+import NavBar from "./components/NavBar.tsx";
 import HomeSection from "./components/HomeSection.tsx";
 import SmoothiesSection from "./components/SmoothiesSection.tsx";
 import AboutSection from "./components/AboutSection.tsx";
@@ -54,7 +54,7 @@ const App: React.FC = () => {
 
   return (
     <div className="w-screen h-full bg-yellow-400">
-      <Navbar
+      <NavBar
         currentSection={currentSection}
         setCurrentSection={setCurrentSection}
       />

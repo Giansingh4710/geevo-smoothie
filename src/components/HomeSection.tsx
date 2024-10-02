@@ -1,5 +1,5 @@
 import React from "react";
-import { Smoothie } from "../assets/types";
+import { Smoothie } from "../assets/types.tsx";
 import { Section } from "../assets/constants.tsx";
 
 interface HomeProps {
