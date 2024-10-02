@@ -4,7 +4,7 @@ import { defineConfig } from "vite"
 
 export default defineConfig({
   plugins: [react()],
-  base: "/geevo-smoothie/", // Set this to your repository name
+  // base: "/geevo-smoothie/", // don't need if you use domain
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
