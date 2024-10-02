@@ -42,7 +42,7 @@ const App: React.FC = () => {
     };
   }
   useEffect(() => {
-    updateCurrentSection();
+    // updateCurrentSection();
   }, []);
 
   useEffect(() => {
