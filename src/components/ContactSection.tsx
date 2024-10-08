@@ -1,93 +1,42 @@
 import { Section } from "@/assets/constants";
-import React, { useState } from "react";
+import React from "react";
 
 const ContactSection: React.FC = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [success, setSuccess] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log({ name, email, message });
-    setSuccess(true);
-    setName("");
-    setEmail("");
-    setMessage("");
-  };
-
   return (
-    <div id={Section.Contact} className="p-8 md:p-12 lg:p-16">
-      <h2 className="text-4xl font-bold mb-4 text-center text-green-600">
+    <div
+      id={Section.Contact}
+      className="p-4 sm:p-8 md:p-12 lg:p-16 bg-purple-50"
+    >
+      <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-center text-purple-800">
         Contact Us
       </h2>
-      <p className="mb-6 text-center  ">
-        We’d love to hear from you! Please fill out the form below or reach us
-        at:
+      <p className="mb-6 text-center text-purple-700">
+        We'd love to hear from you! Get in touch with us using the information
+        below:
       </p>
-      <div className="mb-6 text-center">
-        <p className="mb-2">
-          <strong>Email:</strong>{" "}
+      <div className="text-center">
+        <p className="mb-4">
+          <strong className="text-purple-800">Email:</strong>{" "}
           <a
-            href="mailto:info@yourcompany.com"
-            className="text-green-600 underline"
+            href="mailto:info@geevosmoothies.com"
+            className="text-pink-600 hover:text-pink-700 transition duration-300"
           >
-            info@yourcompany.com
+            info@geevosmoothies.com
           </a>
         </p>
-        <p className="mb-2">
-          <strong>Phone:</strong>{" "}
-          <a href="tel:+1234567890" className="text-green-600 underline">
+        <p className="mb-4">
+          <strong className="text-purple-800">Phone:</strong>{" "}
+          <a
+            href="tel:+1234567890"
+            className="text-pink-600 hover:text-pink-700 transition duration-300"
+          >
             +1 (234) 567-890
           </a>
         </p>
       </div>
-
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg "
-      >
-        <label className="mb-2  ">
-          Name:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            className=" bg-white border rounded p-2 w-full mt-1 focus:outline-none focus:ring-2 focus:ring-green-500 "
-          />
-        </label>
-        <label className="mb-2  ">
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className=" bg-white border  rounded p-2 w-full mt-1 focus:outline-none focus:ring-2 focus:ring-green-500"
-          />
-        </label>
-        <label className="mb-2  ">
-          Message:
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required
-            className=" bg-white border rounded p-2 w-full h-32 mt-1 focus:outline-none focus:ring-2 focus:ring-green-500"
-          />
-        </label>
-        <button
-          type="submit"
-          className="bg-green-500 text-white py-2 px-4 rounded mt-4 hover:bg-green-600 transition duration-300"
-        >
-          Send Message
-        </button>
-        {success && (
-          <p className="mt-4 text-green-600 text-center">
-            Thank you for your message!
-          </p>
-        )}
-      </form>
+      <p className="mt-8 text-center text-purple-700">
+        We're always happy to answer any questions or hear your feedback!
+      </p>
     </div>
   );
 };
