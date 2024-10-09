@@ -1,5 +1,5 @@
 import React from "react";
-import storePic from "../../public/store.jpg";
+import storePic from "../assets/pics/store.jpg";
 import { Section } from "@/assets/constants";
 
 const LocationSection: React.FC = () => {

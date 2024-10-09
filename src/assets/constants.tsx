@@ -1,18 +1,18 @@
-import mango_tango from "../../public//smoothies/mango_tango.jpeg";
-import berry_bliss_banana from "../../public/smoothies/berry_bliss_banana.jpeg";
-import the_green_goddess from "../../public/smoothies/the_green_goddess.jpeg";
-import blueberry_delight from "../../public/smoothies/blueberry_delight.jpeg";
-import hanna_banana from "../../public/smoothies/hanna_banana.jpeg";
+import mango_tango from "./pics/smoothies/mango_tango.jpeg";
+import berry_bliss_banana from "./pics/smoothies/berry_bliss_banana.jpeg";
+import the_green_goddess from "./pics/smoothies/the_green_goddess.jpeg";
+import blueberry_delight from "./pics/smoothies/blueberry_delight.jpeg";
+import hanna_banana from "./pics/smoothies/hanna_banana.jpeg";
 
-import flax_seeds from "../../public/add_ons/flax_seeds.jpg";
-import chia_seeds from "../../public/add_ons/chia_seeds.jpg";
-import hemp_seeds from "../../public/add_ons/hemp_seeds.jpg";
-import protein_powder from "../../public/add_ons/portein_powder.jpg";
+import flax_seeds from "./pics/add_ons/flax_seeds.jpg";
+import chia_seeds from "./pics/add_ons/chia_seeds.jpg";
+import hemp_seeds from "./pics/add_ons/hemp_seeds.jpg";
+import protein_powder from "./pics/add_ons/portein_powder.jpg";
 
-import vanilla_milkshake from "../../public//milkshakes/vanilla_milkshake.jpg";
-import chocolate_milkshake from "../../public/milkshakes/chocolate_milkshake.jpg";
-import cookies_cream_milkshake from "../../public/milkshakes/cookies_cream_milkshake.jpg";
-import strawberry_milkshake from "../../public/milkshakes/strawberry_milkshake.jpg";
+import vanilla_milkshake from "./pics//milkshakes/vanilla_milkshake.jpg";
+import chocolate_milkshake from "./pics/milkshakes/chocolate_milkshake.jpg";
+import cookies_cream_milkshake from "./pics/milkshakes/cookies_cream_milkshake.jpg";
+import strawberry_milkshake from "./pics/milkshakes/strawberry_milkshake.jpg";
 
 import { Smoothie } from "./assets/types";
 export const SMOOTHIES: Smoothie[] = [

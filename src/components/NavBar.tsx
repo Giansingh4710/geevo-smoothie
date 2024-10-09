@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Section } from "../assets/constants.tsx";
-import logo from "../../public/logo.jpg";
+import logo from "../assets/pics/logo.jpg";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
