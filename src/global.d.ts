@@ -19,6 +19,7 @@ declare namespace JSX {
     textarea: any;
     svg: any;
     path: any;
+    main: any;
     // Add custom elements if you have any
   }
 }

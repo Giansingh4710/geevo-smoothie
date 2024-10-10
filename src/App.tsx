@@ -1,32 +1,28 @@
-import React, { useEffect, useRef } from "react";
-import NavBar from "./components/NavBar.tsx";
-import HomeSection from "./components/HomeSection.tsx";
-import SmoothiesSection from "./components/SmoothiesSection.tsx";
-import AboutSection from "./components/AboutSection.tsx";
-import LocationSection from "./components/LocationSection.tsx";
-import { SMOOTHIES, Section } from "./assets/constants.tsx";
-import ContactSection from "./components/ContactSection.tsx";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage.tsx";
+import SmoothiesPage from "./pages/SmoothiesPage.tsx";
+import AddOnsPage from "./pages/AddOnsPage.tsx";
+import MilkshakesPage from "./pages/MilkshakesPage.tsx";
+import AboutPage from "./pages/AboutPage.tsx";
+import VisitUsPage from "./pages/VisitUsPage.tsx";
+// import ContactPage from "./pages/ContactPage.tsx";
+import { PAGES } from "./assets/constants.tsx";
 
 const App: React.FC = () => {
-  const [currentSmoothie, setCurrentSmoothie] = React.useState(SMOOTHIES[0]);
-
-  useEffect(() => {
-  }, []);
-
   return (
-    <div className="w-screen h-full bg-yellow-400">
-      <NavBar />
-      <HomeSection
-        currentSmoothie={currentSmoothie}
-      />
-      <SmoothiesSection
-        currentSmoothie={currentSmoothie}
-        setCurrentSmoothie={setCurrentSmoothie}
-      />
-      <AboutSection />
-      <LocationSection />
-      <ContactSection />
-    </div>
+    <Router>
+      <div className="w-screen h-full bg-pink-50">
+        <Routes>
+          <Route path={PAGES.home.path} element={<HomePage />} />
+          <Route path={PAGES.smoothies.path} element={<SmoothiesPage />} />
+          <Route path={PAGES.addons.path} element={<AddOnsPage />} />
+          <Route path={PAGES.milkshakes.path} element={<MilkshakesPage />} />
+          <Route path={PAGES.about.path} element={<AboutPage />} />
+          <Route path={PAGES.visitus.path} element={<VisitUsPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
