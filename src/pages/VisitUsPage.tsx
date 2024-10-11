@@ -61,15 +61,9 @@ const VisitUsPage: React.FC = () => {
                 Connect with Us
               </h2>
               <div className="flex space-x-4 mt-4">
-                <SocialLink
-                  href="https://facebook.com"
-                  icon={<FaFacebookF />}
-                />
-                <SocialLink
-                  href="https://instagram.com"
-                  icon={<FaInstagram />}
-                />
-                <SocialLink href="https://twitter.com" icon={<FaTwitter />} />
+                {/* <SocialLink href="https://facebook.com" icon={<FaFacebookF />} /> */}
+                {/* <SocialLink href="https://twitter.com" icon={<FaTwitter />} /> */}
+                <SocialLink href="https://www.instagram.com/geevo.herbs/" icon={<FaInstagram />} />
               </div>
             </Card>
           </div>
@@ -111,7 +105,7 @@ const BusinessHours: React.FC = () => {
   const hours = [
     { day: "Mon - Thu", hours: "10:00 AM - 7:00 PM" },
     { day: "Friday", hours: "10:00 AM - 8:30 PM" },
-    { day: "Saturday", hours: "10:30 AM - 6:00 PM" },
+    { day: "Saturday", hours: "10:30 AM - 8:00 PM" },
     { day: "Sunday", hours: "Closed" },
   ];
 

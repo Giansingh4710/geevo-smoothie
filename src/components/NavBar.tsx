@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { PAGES, Page } from "../assets/constants.tsx";
+import { PAGES, PAGE_ENUM, Page_obj } from "../assets/constants.tsx";
 import { Link } from "react-router-dom";
 import logo from "../assets/pics/logo.jpg";
 
-function Navbar({ current_page }: { current_page: Page }) {
+function Navbar({ current_page }: { current_page: Page_obj }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -11,7 +11,7 @@ function Navbar({ current_page }: { current_page: Page }) {
   };
 
   const navLinks = [];
-  for (const page in PAGES) {
+  for (const page of Object.keys(PAGES) as Array<keyof typeof PAGES>) {
     navLinks.push(
       <NavLink
         key={page}
@@ -19,7 +19,7 @@ function Navbar({ current_page }: { current_page: Page }) {
         label={PAGES[page].title}
         isCurrPage={current_page.title === PAGES[page].title}
         closeMenu={toggleMenu}
-      />
+      />,
     );
   }
 
@@ -31,7 +31,6 @@ function Navbar({ current_page }: { current_page: Page }) {
             <Link to="/" className="flex-shrink-0">
               {/* <img src={logo} alt="Geevo Smoothies" className="h-10 w-10 rounded-full" /> */}
               <p className="text-2xl font-bold">Geevo Smoothies</p>
-
             </Link>
             <div className="hidden md:block ml-10">
               <div className="flex items-baseline space-x-4">{navLinks}</div>
@@ -81,13 +80,16 @@ function Navbar({ current_page }: { current_page: Page }) {
         </div>
       </div>
       <div className={`${isMenuOpen ? "block" : "hidden"} md:hidden`}>
-        <div className="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">{navLinks}</div>
+        <div className="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          {navLinks}
+        </div>
       </div>
     </nav>
   );
 }
 
 interface NavLinkProps {
+  key: string;
   to: string;
   label: string;
   isCurrPage: boolean;

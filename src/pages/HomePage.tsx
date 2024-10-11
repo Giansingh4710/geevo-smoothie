@@ -4,8 +4,11 @@ import NavBar from "../components/NavBar.tsx";
 import logo from "../assets/pics/logo.jpg";
 import promo from "../assets/pics/promo.jpg";
 import { FaLeaf, FaHeart, FaShieldAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-function HomePage() {
+const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen flex flex-col bg-pink-50">
       <NavBar current_page={PAGES.home} />
@@ -24,9 +27,7 @@ function HomePage() {
                 </p>
                 <button
                   className="bg-white text-pink-600 font-bold py-3 px-8 rounded hover:bg-pink-100 transition duration-300"
-                  onClick={() => {
-                    window.location.href = "/smoothies";
-                  }}
+                  onClick={() => navigate(PAGES.menu.path)}
                 >
                   Explore Our Smoothies
                 </button>
@@ -48,18 +49,17 @@ function HomePage() {
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="md:w-1/2 mb-8 md:mb-0">
                 <h2 className="text-3xl sm:text-4xl font-bold text-pink-700 mb-4">
-                  Try Our Summer Special!
+                  Enjoy Our Refreshing Smoothies, Milkshakes, and Tasty Bites!
                 </h2>
                 <p className="text-xl text-pink-600 mb-6">
-                  Introducing our refreshing Tropical Paradise Smoothie. A
-                  perfect blend of mango, pineapple, and coconut to transport
-                  you to a sunny beach!
+                  Discover our delicious range of smoothies, milkshakes, and
+                  mouthwatering bites. Whether you're craving something
+                  refreshing or a quick snack, we’ve got just the treat to
+                  satisfy your cravings and brighten your day!
                 </p>
                 <button
                   className="bg-pink-600 text-white font-bold py-3 px-8 rounded hover:bg-pink-700 transition duration-300"
-                  onClick={() => {
-                    window.location.href = "/smoothies";
-                  }}
+                  onClick={() => navigate(PAGES.visitus.path)}
                 >
                   Order Now
                 </button>
@@ -112,9 +112,7 @@ function HomePage() {
             </p>
             <button
               className="bg-white text-pink-600 font-bold py-3 px-8 rounded hover:bg-pink-100 transition duration-300"
-              onClick={() => {
-                window.location.href = "/visitus";
-              }}
+              onClick={() => navigate(PAGES.visitus.path)}
             >
               Find Our Location
             </button>
@@ -123,18 +121,21 @@ function HomePage() {
       </main>
     </div>
   );
-}
+};
 
-const BenefitCard: React.FC<{
+interface BenefitCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
-}> = ({ icon, title, description }) => (
-  <div className="bg-white rounded-lg p-6 text-center shadow-md hover:shadow-lg transition duration-300">
-    <div className="flex justify-center mb-4">{icon}</div>
-    <h3 className="text-xl font-semibold text-pink-700 mb-2">{title}</h3>
-    <p className="text-pink-600">{description}</p>
-  </div>
-);
+}
+function BenefitCard({ icon, title, description }: BenefitCardProps) {
+  return (
+    <div className="bg-white rounded-lg p-6 text-center shadow-md hover:shadow-lg transition duration-300">
+      <div className="flex justify-center mb-4">{icon}</div>
+      <h3 className="text-xl font-semibold text-pink-700 mb-2">{title}</h3>
+      <p className="text-pink-600">{description}</p>
+    </div>
+  );
+}
 
 export default HomePage;

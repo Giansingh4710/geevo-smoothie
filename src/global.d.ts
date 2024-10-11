@@ -6,11 +6,12 @@ declare namespace JSX {
     ul: any;
     section: any;
     h1: any;
+    h2: any;
+    h3: any;
     p: any;
     button: any;
     img: any;
     li: any;
-    h2: any;
     strong: any;
     a: any;
     form: any;
