@@ -5,20 +5,66 @@ import {
   SMOOTHIES,
   MILKSHAKES,
   ADDONS,
+  COFFEES,
+  OPTIONS,
+  SPECIALITYDRINKS,
 } from "../assets/constants.tsx";
 import NavBar from "../components/NavBar.tsx";
 import { atButtomOfPage } from "../assets/helpers.tsx";
-import { FaCocktail, FaIceCream, FaPlus } from "react-icons/fa";
+import { FaPlus, FaCoffee } from "react-icons/fa";
 import { RiDrinksLine } from "react-icons/ri";
 import { TbMilkshake } from "react-icons/tb";
+import { MdReplayCircleFilled } from "react-icons/md";
 
 export default function MenuPage() {
   const [activeSection, setActiveSection] = useState("smoothies");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
-  const smoothiesRef = useRef<HTMLDivElement>(null);
-  const milkshakesRef = useRef<HTMLDivElement>(null);
-  const addOnsRef = useRef<HTMLDivElement>(null);
+
+  const sections = [
+    {
+      name: "Smoothies",
+      items: SMOOTHIES,
+      btn_icon: <RiDrinksLine />,
+      btn_ref: useRef<HTMLButtonElement>(null),
+      ref: useRef<HTMLDivElement>(null),
+    },
+    {
+      name: "Milkshakes",
+      items: MILKSHAKES,
+      btn_icon: <TbMilkshake />,
+      btn_ref: useRef<HTMLButtonElement>(null),
+      ref: useRef<HTMLDivElement>(null),
+    },
+    {
+      name: "Add-Ons",
+      items: ADDONS,
+      btn_icon: <FaPlus />,
+      btn_ref: useRef<HTMLButtonElement>(null),
+      ref: useRef<HTMLDivElement>(null),
+    },
+    {
+      name: "Coffee",
+      items: COFFEES,
+      btn_icon: <FaCoffee />,
+      btn_ref: useRef<HTMLButtonElement>(null),
+      ref: useRef<HTMLDivElement>(null),
+    },
+    {
+      name: "Options",
+      items: OPTIONS,
+      btn_icon: <MdReplayCircleFilled />,
+      btn_ref: useRef<HTMLButtonElement>(null),
+      ref: useRef<HTMLDivElement>(null),
+    },
+    {
+      name: "Speciality Drinks",
+      items: SPECIALITYDRINKS,
+      btn_icon: <RiDrinksLine />,
+      btn_ref: useRef<HTMLButtonElement>(null),
+      ref: useRef<HTMLDivElement>(null),
+    },
+  ];
 
   const scrollToSection = (
     ref: React.RefObject<HTMLDivElement>,
@@ -47,32 +93,30 @@ export default function MenuPage() {
   useEffect(() => {
     function handleScroll() {
       const userPosY = window.scrollY;
-      const smoothiesPosY = smoothiesRef.current?.offsetTop;
-      const milkshakesPosY = milkshakesRef.current?.offsetTop;
-      const addOnsPosY = addOnsRef.current?.offsetTop;
 
       if (atButtomOfPage()) {
-        setActiveSection("addons"); // set the lastone if at bottom of page
+        setActiveSection(sections[sections.length - 1].name);
+        scrollToActiveButton(sections[sections.length - 1].btn_ref);
         return;
       }
 
-      if (!userPosY || !smoothiesPosY || !milkshakesPosY || !addOnsPosY) {
-        return;
-      }
+      const validSections = sections.filter(
+        (section) => section.ref.current?.offsetTop
+      );
 
-      // console.log({ userPosY, smoothiesPosY, milkshakesPosY, addOnsPosY });
+      if (!validSections.length) return;
 
-      const smoothieDiff = Math.abs(userPosY - smoothiesPosY);
-      const milkshakeDiff = Math.abs(userPosY - milkshakesPosY);
-      const addOnsDiff = Math.abs(userPosY - addOnsPosY);
+      const diffs = validSections.map((section) => ({
+        ...section,
+        diff: Math.abs(userPosY - section.ref.current.offsetTop),
+      }));
 
-      if (smoothieDiff < milkshakeDiff && smoothieDiff < addOnsDiff) {
-        setActiveSection("smoothies");
-      } else if (milkshakeDiff < smoothieDiff && milkshakeDiff < addOnsDiff) {
-        setActiveSection("milkshakes");
-      } else if (addOnsDiff < smoothieDiff && addOnsDiff < milkshakeDiff) {
-        setActiveSection("addons");
-      }
+      const closestSection = diffs.reduce((prev, curr) =>
+        curr.diff < prev.diff ? curr : prev
+      );
+
+      setActiveSection(closestSection.name);
+      scrollToActiveButton(closestSection.btn_ref);
     }
 
     window.addEventListener("scroll", handleScroll);
@@ -84,51 +128,31 @@ export default function MenuPage() {
       <NavBar current_page={PAGES.menu} />
       <nav className="sticky top-0 bg-white shadow-md z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-evenly  p-2 ">
-            <NavButton
-              onClick={() => scrollToSection(smoothiesRef, "smoothies")}
-              isActive={activeSection === "smoothies"}
-              icon={<RiDrinksLine />}
-              text="Smoothies"
-            />
-            <NavButton
-              onClick={() => scrollToSection(milkshakesRef, "milkshakes")}
-              isActive={activeSection === "milkshakes"}
-              icon={<TbMilkshake />}
-              text="Milkshakes"
-            />
-            <NavButton
-              onClick={() => scrollToSection(addOnsRef, "addons")}
-              isActive={activeSection === "addons"}
-              icon={<FaPlus />}
-              text="Add-Ons"
-            />
+          <div className="flex justify-evenly p-2 overflow-x-auto whitespace-nowrap">
+            {sections.map((section) => (
+              <NavButton
+                key={section.name}
+                btn_ref={section.btn_ref}
+                onClick={() => scrollToSection(section.ref, section.name)}
+                isActive={activeSection === section.name}
+                icon={section.btn_icon}
+                text={section.name}
+              />
+            ))}
           </div>
         </div>
       </nav>
       <main className="flex-grow p-4 md:p-8">
         <div className="max-w-7xl mx-auto">
-          <MenuSection
-            the_ref={smoothiesRef}
-            id="smoothies"
-            title="Smoothies"
-            items={SMOOTHIES}
-            onCardClick={handleCardClick}
-          />
-          <MenuSection
-            the_ref={milkshakesRef}
-            id="milkshakes"
-            title="Milkshakes"
-            items={MILKSHAKES}
-            onCardClick={handleCardClick}
-          />
-          <MenuSection
-            the_ref={addOnsRef}
-            id="addons"
-            title="Add-Ons"
-            items={ADDONS}
-            onCardClick={handleCardClick}
-          />
+          {sections.map((section) => (
+            <MenuSection
+              key={section.name}
+              the_ref={section.ref}
+              title={section.name}
+              items={section.items}
+              onCardClick={handleCardClick}
+            />
+          ))}
         </div>
       </main>
       <Modal
@@ -139,13 +163,16 @@ export default function MenuPage() {
     </div>
   );
 }
+
 const NavButton: React.FC<{
+  btn_ref: React.RefObject<HTMLButtonElement>;
   onClick: () => void;
   isActive: boolean;
   icon: React.ReactElement;
   text: string;
-}> = ({ onClick, isActive, text, icon }) => (
+}> = ({ btn_ref, onClick, isActive, text, icon }) => (
   <button
+    ref={btn_ref}
     onClick={onClick}
     className={`
       flex items-center justify-center p-1 text-xs font-medium rounded-md
@@ -161,7 +188,7 @@ const NavButton: React.FC<{
     <span className="mr-2 text-lg">
       {React.cloneElement(icon, { className: "inline" })}
     </span>
-    <span className="text-sm">{text}</span>
+    <span className="text-sm whitespace-nowrap">{text}</span>
   </button>
 );
 
@@ -194,21 +221,14 @@ const MenuCard: React.FC<{
 
 interface MenuSectionProps {
   the_ref: React.RefObject<HTMLDivElement>;
-  id: string;
   title: string;
   items: MenuItem[];
   onCardClick: (item: MenuItem) => void;
 }
 
-function MenuSection({
-  the_ref,
-  id,
-  title,
-  items,
-  onCardClick,
-}: MenuSectionProps) {
+function MenuSection({ the_ref, title, items, onCardClick }: MenuSectionProps) {
   return (
-    <div id={id} className="mb-16">
+    <div id={title} className="mb-16">
       <h2 ref={the_ref} className="text-4xl font-bold text-pink-700 mb-8">
         {title}
       </h2>
@@ -277,3 +297,21 @@ const Modal: React.FC<{
     </div>
   );
 };
+
+function scrollToActiveButton(btnRef: React.RefObject<HTMLButtonElement>) {
+  const container = btnRef.current?.parentElement;
+  const button = btnRef.current;
+
+  if (container && button) {
+    const containerWidth = container.offsetWidth;
+    const buttonOffsetLeft = button.offsetLeft;
+    const buttonWidth = button.offsetWidth;
+
+    const scrollPos = buttonOffsetLeft - containerWidth / 2 + buttonWidth / 2;
+
+    container.scrollTo({
+      left: scrollPos,
+      behavior: "smooth",
+    });
+  }
+}

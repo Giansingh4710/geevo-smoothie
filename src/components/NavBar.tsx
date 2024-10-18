@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { PAGES, PAGE_ENUM, Page_obj } from "../assets/constants.tsx";
 import { Link } from "react-router-dom";
-import logo from "../assets/pics/logo.jpg";
+import logo from "../assets/pics/logo.png";
 
 function Navbar({ current_page }: { current_page: Page_obj }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,18 +19,18 @@ function Navbar({ current_page }: { current_page: Page_obj }) {
         label={PAGES[page].title}
         isCurrPage={current_page.title === PAGES[page].title}
         closeMenu={toggleMenu}
-      />,
+      />
     );
   }
 
   return (
-    <nav className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md">
+    <nav className="w-full bg-gradient-to-r from-[#ff7a50] via-[#ff7ade] to-[#ff87d3] text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
-              {/* <img src={logo} alt="Geevo Smoothies" className="h-10 w-10 rounded-full" /> */}
-              <p className="text-2xl font-bold">Geevo Smoothies</p>
+              <img src={logo} alt="Geevo Smoothies" className=" h-10 w-30  " />
+              {/* <p className="text-2xl font-bold">Geevo Smoothies</p> */}
             </Link>
             <div className="hidden md:block ml-10">
               <div className="flex items-baseline space-x-4">{navLinks}</div>

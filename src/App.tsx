@@ -10,7 +10,7 @@ import MenuPage from "./pages/MenuPage.tsx";
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="w-screen h-full bg-pink-50">
+      <div className="w-screen h-full bg-pink-50 font-lora">
         <Routes>
           <Route path={PAGES.home.path} element={<HomePage />} />
           <Route path={PAGES.menu.path} element={<MenuPage />} />

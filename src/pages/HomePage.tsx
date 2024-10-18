@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PAGES } from "../assets/constants";
 import NavBar from "../components/NavBar.tsx";
-import logo from "../assets/pics/logo.jpg";
+// import logo from "../assets/pics/logo.jpg";
+import logo from "../assets/pics/logo.png";
 import promo from "../assets/pics/promo.jpg";
+import { ADDONS } from "../assets/constants";
+
+import herbo_protein1 from "../assets/pics/add_ons/herbo_protein_1.jpg";
+import herbo_protein2 from "../assets/pics/add_ons/herbo_protein_2.jpg";
+import herbo_protein3 from "../assets/pics/add_ons/herbo_protein_3.jpg";
+import herbo_protein4 from "../assets/pics/add_ons/herbo_protein_4.jpg";
+import herbo_protein5 from "../assets/pics/add_ons/herbo_protein_5.jpg";
+import herbo_protein6 from "../assets/pics/add_ons/herbo_protein_6.jpg";
+
 import { FaLeaf, FaHeart, FaShieldAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -14,12 +24,12 @@ const HomePage: React.FC = () => {
       <NavBar current_page={PAGES.home} />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-pink-500 to-purple-600 text-white py-20">
+        <section className="bg-gradient-to-r from-[#ff7a50] via-[#ff7ade] to-[#ff87d3] text-white py-2 sm:py-32">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="md:w-1/2 mb-10 md:mb-0">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
-                  Welcome to Geevo Smoothies
+                  Welcome to Geevo Smoothie
                 </h1>
                 <p className="text-xl mb-8">
                   Discover a new twist on classic smoothies that will blow your
@@ -32,12 +42,9 @@ const HomePage: React.FC = () => {
                   Explore Our Smoothies
                 </button>
               </div>
-              <div className=" md:w-1/2 flex justify-center">
-                <img
-                  src={logo}
-                  alt="Geevo Smoothies"
-                  className="w-64 h-24 sm:w-80 sm:h-56 object-cover rounded border-4 border-white shadow-2xl"
-                />
+
+              <div className="md:w-1/2 flex justify-center">
+                <img src={logo} alt="Geevo Smoothies" className="" />
               </div>
             </div>
           </div>
@@ -75,8 +82,11 @@ const HomePage: React.FC = () => {
           </div>
         </section>
 
+        {/* Protein Pomo Section */}
+        <HerboProteinPromo />
+
         {/* Benefits Section */}
-        <section className="py-16 bg-pink-100">
+        <section className="py-16 bg-pink-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-center text-pink-700 mb-12">
               Why Choose Geevo Smoothies?
@@ -138,4 +148,102 @@ function BenefitCard({ icon, title, description }: BenefitCardProps) {
   );
 }
 
+function HerboProteinPromo() {
+  const herbo_protein_pics = [
+    herbo_protein1,
+    herbo_protein2,
+    herbo_protein3,
+    herbo_protein4,
+    herbo_protein5,
+    herbo_protein6,
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  const nextSlide = () => {
+    setFadeOut(true);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === herbo_protein_pics.length - 1 ? 0 : prevIndex + 1
+      );
+      setProgress(0);
+      setFadeOut(false);
+    }, 300);
+  };
+
+  const prevSlide = () => {
+    setFadeOut(true);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === 0 ? herbo_protein_pics.length - 1 : prevIndex - 1
+      );
+      setProgress(0);
+      setFadeOut(false);
+    }, 300);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress >= 100) {
+          nextSlide();
+          return 0;
+        }
+        return prevProgress + 2; // Increase by 2% every 100ms
+      });
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className="py-16 bg-gradient-to-r from-pink-100 to-purple-100">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="md:w-1/2 flex justify-center mb-8 md:mb-0">
+            <div className="relative w-full max-w-md">
+              <div className="flex w-80 sm:w-full h-80 relative rounded-lg shadow-xl">
+                <img
+                  src={herbo_protein_pics[currentIndex]}
+                  alt={`Herbo Protein ${currentIndex + 1}`}
+                  className={`  w-full h-full object-contain transition-opacity duration-300 ${
+                    fadeOut ? "opacity-0" : "opacity-100"
+                  }`}
+                />
+              </div>
+
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-200">
+                <div
+                  className="h-full bg-pink-500 transition-all duration-100"
+                  style={{ width: `${progress}%` }}
+                ></div>
+              </div>
+              <button
+                onClick={prevSlide}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2 text-pink-700 hover:bg-opacity-75 transition-all duration-300"
+              >
+                &#10094;
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2 text-pink-700 hover:bg-opacity-75 transition-all duration-300"
+              >
+                &#10095;
+              </button>
+            </div>
+          </div>
+          <div className="md:w-1/2">
+            <h2 className="text-3xl sm:text-4xl font-bold text-pink-700 mb-4">
+              Try our new Herbo Protein in Any Smoothie or Milkshake
+            </h2>
+            <p className="text-xl text-pink-600 mb-6">
+              {ADDONS[5].description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 export default HomePage;
