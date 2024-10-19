@@ -53,17 +53,17 @@ const VisitUsPage: React.FC = () => {
                 />
                 <ContactItem
                   icon={<FaEnvelope className="text-pink-500 text-xl" />}
-                  content="info@geevosmoothies.com"
-                  href="mailto:info@geevosmoothies.com"
+                  content="jiwankaur55@gmail.com"
+                  href="mailto:jiwankaur55@gmail.com"
                 />
               </div>
               <h2 className="text-lg font-semibold text-pink-700 mt-6">
                 Connect with Us
               </h2>
               <div className="flex space-x-4 mt-4">
-                {/* <SocialLink href="https://facebook.com" icon={<FaFacebookF />} /> */}
                 {/* <SocialLink href="https://twitter.com" icon={<FaTwitter />} /> */}
-                <SocialLink href="https://www.instagram.com/geevo.herbs/" icon={<FaInstagram />} />
+                <SocialLink href="https://www.facebook.com/people/Geevo-Smoothie/61567061822100/" icon={<FaFacebookF />} />
+                <SocialLink href="https://www.instagram.com/geevosmoothies/" icon={<FaInstagram />} />
               </div>
             </Card>
           </div>
@@ -103,9 +103,8 @@ const ContactItem: React.FC<{
 
 const BusinessHours: React.FC = () => {
   const hours = [
-    { day: "Mon - Thu", hours: "10:00 AM - 7:00 PM" },
-    { day: "Friday", hours: "10:00 AM - 8:30 PM" },
-    { day: "Saturday", hours: "10:30 AM - 8:00 PM" },
+    { day: "Mon - Fri", hours: "7:00 AM - 7:00 PM" },
+    { day: "Saturday", hours: "11:00 AM - 8:00 PM" },
     { day: "Sunday", hours: "Closed" },
   ];
 

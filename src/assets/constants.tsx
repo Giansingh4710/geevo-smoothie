@@ -58,7 +58,7 @@ export const SMOOTHIES: Smoothie[] = [
     pic: the_green_goddess,
     name: "The Green Goddess",
     description:
-      "A vibrant blend of spinach, avocado, pineapple, and banana with creamy Greek yogurt and a touch of agave. Nutrient-packed and refreshingly delicious!",
+      "A vibrant blend of spinach, avocado and pineapple with creamy Greek yogurt and a touch of agave. Nutrient-packed and refreshingly delicious!",
     price: "$6.95 (S) / $7.95 (L)",
   },
   {
@@ -123,7 +123,7 @@ export const ADDONS: AddOn[] = [
     pic: herbo_protein1,
     name: "Herbo Protein",
     description:
-      "Herbo Protein is a premium plant-based blend, offering a natural, wholesome source of protein. Ideal for vegans, vegetarians, or anyone looking to enhance their diet, this supplement helps boost energy, promote muscle recovery, and support a healthy lifestyle. Whether mixed into smoothies, coffee, or post-workout shakes, Herbo Protein provides the perfect balance of nutrition and flavor to fuel your day.",
+      "Herbo Protien is a unique Whey protien isolate blend offering a natural, wholesome source for protein. Rather than just protien powder with artificial flavors and sweetener, Herbo Protein is infused with extracts from 5 powerful herbs ideal for anyone looking to enhance their diet. This protien blend helps boost energy, promote muscle recovery, and support a healthy lifestyle. Whether mixed into smoothies, coffee, or post-workout shakes, Herbo Protein provides the perfect balance of nutrition and flavor to fuel your day.",
     price: "$2.00",
   },
 ];
@@ -237,7 +237,7 @@ export const SPECIALITYDRINKS: Option[] = [
     name: "Hot Chocolate",
     description:
       "A rich, decadent hot chocolate made with premium cocoa and perfectly steamed milk. This cozy treat offers a creamy, velvety experience with a delightful balance of sweetness and chocolatey goodness. Perfect for warming up your day with a comforting sip!",
-    price: "$2.50",
+    price: "$2.50 (10z) / $3.99 (16z)",
   },
 ];
 
