@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { PAGES } from "../assets/constants";
+import { PAGES } from "../assets/constants.tsx";
 import NavBar from "../components/NavBar.tsx";
 // import logo from "../assets/pics/logo.jpg";
 import logo from "../assets/pics/logo.png";

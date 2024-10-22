@@ -6,7 +6,7 @@ import {
   MILKSHAKES,
   ADDONS,
   COFFEES,
-  OPTIONS,
+  MILK_ALTERNATIVES,
   SPECIALITYDRINKS,
 } from "../assets/constants.tsx";
 import NavBar from "../components/NavBar.tsx";
@@ -44,15 +44,15 @@ export default function MenuPage() {
       ref: useRef<HTMLDivElement>(null),
     },
     {
-      name: "Coffee",
+      name: "Coffee and Tea",
       items: COFFEES,
       btn_icon: <FaCoffee />,
       btn_ref: useRef<HTMLButtonElement>(null),
       ref: useRef<HTMLDivElement>(null),
     },
     {
-      name: "Options",
-      items: OPTIONS,
+      name: "Milk Alternatives",
+      items: MILK_ALTERNATIVES,
       btn_icon: <MdReplayCircleFilled />,
       btn_ref: useRef<HTMLButtonElement>(null),
       ref: useRef<HTMLDivElement>(null),

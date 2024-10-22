@@ -11,14 +11,16 @@ import chocolate_protein_powder from "./pics/add_ons/chocolate_protein_powder.jp
 import vanilla_protein_powder from "./pics/add_ons/vanilla_protein_powder.jpg";
 import herbo_protein1 from "./pics/add_ons/herbo_protein_1.jpg";
 
-import almond_milk from "./pics/options/almond_milk.png";
-import oatmilk from "./pics/options/oatmilk.png";
+import almond_milk from "./pics/milk_alternatives/almond_milk.png";
+import oatmilk from "./pics/milk_alternatives/oatmilk.png";
 
 import vanilla_milkshake from "./pics/milkshakes/vanilla_milkshake.jpg";
 import chocolate_milkshake from "./pics/milkshakes/chocolate_milkshake.jpg";
 import cookies_cream_milkshake from "./pics/milkshakes/cookies_cream_milkshake.jpg";
 import strawberry_milkshake from "./pics/milkshakes/strawberry_milkshake.jpg";
 
+import lattee from "./pics/coffees/latte.jpg";
+import tea from "./pics/coffees/tea.jpg";
 import vanilla_coffee from "./pics/coffees/vanilla.jpg";
 import sugarfree_vanilla_coffee from "./pics/coffees/sugar-free-vanilla.jpg";
 import simple_syrup_coffee from "./pics/coffees/simple-syrup.jpg";
@@ -33,13 +35,7 @@ export interface MenuItem {
   price: string;
 }
 
-export interface Smoothie extends MenuItem {
-  pic: string;
-  name: string;
-  description: string;
-  price: string;
-}
-export const SMOOTHIES: Smoothie[] = [
+export const SMOOTHIES: MenuItem[] = [
   {
     pic: mango_tango,
     name: "Mango Tango",
@@ -77,13 +73,7 @@ export const SMOOTHIES: Smoothie[] = [
   },
 ];
 
-export interface AddOn extends MenuItem {
-  name: string;
-  pic: string;
-  description: string;
-  price: string;
-}
-export const ADDONS: AddOn[] = [
+export const ADDONS: MenuItem[] = [
   {
     pic: chia_seeds,
     name: "Chia Seeds",
@@ -128,13 +118,7 @@ export const ADDONS: AddOn[] = [
   },
 ];
 
-export interface Milkshake extends MenuItem {
-  pic: string;
-  name: string;
-  description: string;
-  price: string;
-}
-export const MILKSHAKES: Milkshake[] = [
+export const MILKSHAKES: MenuItem[] = [
   {
     pic: vanilla_milkshake,
     name: "Vanilla Milkshake",
@@ -165,50 +149,45 @@ export const MILKSHAKES: Milkshake[] = [
   },
 ];
 
-export interface Coffee extends MenuItem {
-  pic: string;
-  name: string;
-  description: string;
-  price: string;
-}
-export const COFFEES: Coffee[] = [
+export const COFFEES: MenuItem[] = [
   {
-    pic: vanilla_coffee,
-    name: "Vanilla",
+    pic: lattee,
+    name: "Vanilla Latte (Iced/Hot)",
     description:
-      "Smooth and creamy, with a rich vanilla flavor that perfectly balances the robust coffee base. A comforting classic for any time of day.",
+      "A creamy blend of espresso and milk infused with rich vanilla flavor. Perfectly balanced for a smooth, comforting sip anytime.",
     price: "$3.95 (10oz) / $4.75 (16oz)",
   },
   {
-    pic: sugarfree_vanilla_coffee,
-    name: "Sugar-Free Vanilla",
+    pic: lattee,
+    name: "Café Latte (Iced/Hot)",
     description:
-      "Indulge in the same velvety vanilla essence without the guilt. A sugar-free twist on a beloved favorite, perfect for those watching their sugar intake.",
+      "Classic espresso and steamed milk, creating a velvety, smooth coffee experience. A simple, timeless favorite.",
     price: "$3.95 (10oz) / $4.75 (16oz)",
   },
   {
-    pic: simple_syrup_coffee,
-    name: "Simple Syrup",
+    pic: lattee,
+    name: "Caramel Latte (Iced/Hot)",
     description:
-      "Lightly sweetened with classic simple syrup, this coffee enhances the natural flavors of the brew for a smooth, subtle sweetness in every sip.",
+      "A rich caramel-flavored espresso drink, balanced with milk for a smooth and subtly sweet treat in every sip.",
     price: "$3.95 (10oz) / $4.75 (16oz)",
   },
   {
-    pic: pumpkin_spice_coffee,
-    name: "Pumpkin Spice",
+    pic: lattee,
+    name: "Pumpkin Spice Latte (Iced/Hot)",
     description:
-      "A seasonal delight, blending warm notes of cinnamon, nutmeg, and cloves with a smooth coffee base. The perfect cozy drink for autumn.",
+      "A cozy blend of espresso, milk, and pumpkin spice flavors, topped with warming notes of cinnamon and nutmeg. A fall favorite.",
+    price: "$3.95 (10oz) / $4.75 (16oz)",
+  },
+  {
+    pic: tea,
+    name: "Tea (Hot)",
+    description:
+      "A seasonal soothing and aromatic selection of fine teas, brewed to perfection for a calming and refreshing experience. Ideal for tea lovers. Comes in many flavors",
     price: "$3.95 (10oz) / $4.75 (16oz)",
   },
 ];
 
-export interface Option extends MenuItem {
-  pic: string;
-  name: string;
-  description: string;
-  price: string;
-}
-export const OPTIONS: Option[] = [
+export const MILK_ALTERNATIVES: MenuItem[] = [
   {
     pic: almond_milk,
     name: "Almond Milk",
@@ -225,13 +204,7 @@ export const OPTIONS: Option[] = [
   },
 ];
 
-export interface SpecialityDrink extends MenuItem {
-  pic: string;
-  name: string;
-  description: string;
-  price: string;
-}
-export const SPECIALITYDRINKS: Option[] = [
+export const SPECIALITYDRINKS: MenuItem[] = [
   {
     pic: hot_chocolate,
     name: "Hot Chocolate",
@@ -245,6 +218,7 @@ export enum PAGE_ENUM {
   home = "home",
   menu = "menu",
   about = "about",
+  promotions = "promotions",
   visitus = "visitus",
 }
 export type Page_obj = { title: string; path: string };
@@ -252,5 +226,6 @@ export const PAGES: Record<PAGE_ENUM, Page_obj> = {
   home: { title: "Home", path: "/" },
   menu: { title: "Menu", path: "/menu" },
   about: { title: "About", path: "/about" },
+  promotions: { title: "Promotions", path: "/promotions" },
   visitus: { title: "Visit Us", path: "/visitus" },
 } as const;

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import VisitUsPage from "./pages/VisitUsPage.tsx";
+import PromotionsPage from "./pages/PromotionsPage.tsx";
 // import ContactPage from "./pages/ContactPage.tsx";
 import { PAGES } from "./assets/constants.tsx";
 import MenuPage from "./pages/MenuPage.tsx";
@@ -15,6 +16,7 @@ const App: React.FC = () => {
           <Route path={PAGES.home.path} element={<HomePage />} />
           <Route path={PAGES.menu.path} element={<MenuPage />} />
           <Route path={PAGES.about.path} element={<AboutPage />} />
+          <Route path={PAGES.promotions.path} element={<PromotionsPage />} />
           <Route path={PAGES.visitus.path} element={<VisitUsPage />} />
         </Routes>
       </div>
