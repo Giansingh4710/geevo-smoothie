@@ -180,9 +180,9 @@ export const COFFEES: MenuItem[] = [
   },
   {
     pic: tea,
-    name: "Tea (Hot)",
+    name: "Herbal Tea",
     description:
-      "A seasonal soothing and aromatic selection of fine teas, brewed to perfection for a calming and refreshing experience. Ideal for tea lovers. Comes in many flavors",
+      "A soothing, aromatic selection of herbal teas crafted for a calming and refreshing experience. Each blend is brewed to perfection, offering a variety of flavors to delight tea lovers and bring a sense of relaxation with every sip.",
     price: "$3.95 (10oz) / $4.75 (16oz)",
   },
 ];
